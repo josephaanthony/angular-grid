@@ -7,6 +7,37 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style> html, body { margin: 0; padding: 0; height: 100%; } </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+  <script src="./assets/scripts/mockServer.js" type="text/javascript"></script>
+  <script src="./assets/scripts/viewportDatasource.js" type="text/javascript"></script>
+
+  <script>
+      function make_sticky(id) {
+          var e = $(id);
+          var w = $(window);
+          $('<div/>').insertBefore(id);
+          $('<div/>').hide().css('height',e.outerHeight()).insertAfter(id);
+          var n = e.next();
+          var p = e.prev();
+          function sticky_relocate() {
+            var window_top = w.scrollTop();
+            var div_top = p.offset().top;
+            if (window_top > div_top) {
+              e.addClass('sticky');
+              n.show();
+            } else {
+              e.removeClass('sticky');
+              n.hide();
+            }
+          }
+          w.scroll(sticky_relocate);
+          sticky_relocate();
+      }
+  </script>
 </head>
 <body>
   <app-root></app-root>
