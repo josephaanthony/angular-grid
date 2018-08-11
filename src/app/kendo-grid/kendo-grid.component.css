@@ -1,0 +1,25 @@
+.grid-row {
+    margin: 25px;
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+}
+
+.rowId {
+    color: crimson;
+    font-size: xx-large
+}
+
+.row-button {
+    padding: 5px;
+}
+
+.grid-header {
+    background: grey;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+.sticky { position:fixed; top:0; width: 100%; z-index: 10000; }

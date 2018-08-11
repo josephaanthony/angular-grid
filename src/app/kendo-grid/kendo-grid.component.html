@@ -1,0 +1,63 @@
+<!-- {{ models | json }} -->
+
+<div>
+    <input type="text" #scrollToInput> <button (click)="scrollTo(scrollToInput.value)">Scroll To</button>
+</div>
+
+<div class="sticky" style="background-color: white" id="sticky-header">
+    <div class="grid-header grid-row row">
+        <div class="col-sm-2">Add/Delete</div>
+
+        <div class="col-sm-1">Name</div>
+        <div class="col-sm-2">AlterEgo</div>
+        <div class="col-sm-1">Power</div>    
+        
+        <div class="col-sm-1">Name 2</div>
+        <div class="col-sm-2">AlterEgo 2</div>
+        <div class="col-sm-1">Power 2</div>        
+    </div>
+</div>
+
+<virtual-scroll #scroll [items]="models" (update)="viewPortItems = $event"
+    [parentScroll]="scroll.window"
+    [enableUnequalChildrenSizes]="true">
+
+    <div *ngFor="let model of viewPortItems">
+        <div class="grid-row row">
+            <div class="col-sm-2">
+                <span class="rowId">{{model.id}}</span>
+                <button class="row-button" 
+                    (click)="models.splice(findIndex(model) + 1 , 0, { added: true, id: incrementCounter() })"
+                    >Add!</button>
+                <button class="row-button" (click)="models.splice(findIndex(model), 1)">Delete!</button>
+            </div>
+
+            <div class="form-group-cell col-sm-1">
+                <my-input-comp [index]="model.id" [compValue]=model.name [compCaption]="'name'"></my-input-comp>
+            </div>
+        
+            <div class="form-group-cell col-sm-2">
+            <input type="text"  class="form-control" id="alterEgo"
+                    [(ngModel)]="model.alterEgo" name="alterEgo">
+            </div>
+        
+            <div class="form-group-cell col-sm-1">
+                <my-dropdown-comp [index]="model.id" [compValue]="model.power" (compValueOut)="model.power = $event" [compCaption]="'power'"></my-dropdown-comp>
+            </div>
+    
+            <div class="form-group-cell col-sm-1">
+                <my-input-comp [index]="model.id" [compValue]=model.name [compCaption]="'name'"></my-input-comp>
+            </div>
+            
+            <div class="form-group-cell col-sm-2">
+            <input type="text"  class="form-control" id="alterEgo"
+                    [(ngModel)]="model.alterEgo" name="alterEgo">
+            </div>
+        
+            <div class="form-group-cell col-sm-1">
+                <my-dropdown-comp [index]="model.id" [compValue]=model.power [compCaption]="'power'"></my-dropdown-comp>
+            </div>
+        
+        </div>
+    </div>            
+</virtual-scroll>

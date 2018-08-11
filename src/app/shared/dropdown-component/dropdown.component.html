@@ -1,0 +1,11 @@
+<select class="form-control"  id="power"
+        required
+        [(ngModel)]="compValue" [name]="compCaption" (ngModelChange)="compValueOut.emit(compValue)">
+    <option *ngFor="let pow of powers[index % 3]" [value]="pow">{{pow}}</option>
+</select>
+
+{{ index % 3 }}
+
+<extra-comp *ngIf="compValue === 'Power22'">
+
+</extra-comp>

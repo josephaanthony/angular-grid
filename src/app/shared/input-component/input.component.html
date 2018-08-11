@@ -1,0 +1,4 @@
+<input type="text" class="control"
+required
+[(ngModel)]="compValue" [name]="compCaption">
+<div *ngIf="index % 5 == 0; else noFive" class="control-info"> This is a multiple of 5 </div>
