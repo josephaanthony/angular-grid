@@ -1,20 +1,16 @@
-import { Component, ViewChild, Inject, OnInit } from "@angular/core";
+import { Component, ViewChild, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { VirtualScrollComponent } from 'angular2-virtual-scroll';
 
-import { GridDataResult } from '@progress/kendo-angular-grid';
-import { State, process } from '@progress/kendo-data-query';
-import { map } from 'rxjs/operators/map';
-
 declare var make_sticky;
 
 @Component({
-    selector: 'my-kendo-grid',
-    templateUrl: `kendo-grid.component.html`,
-    styleUrls: ['kendo-grid.component.css']
+    selector: 'my-virtual-grid',
+    templateUrl: `virtual-grid.component.html`,
+    styleUrls: ['virtual-grid.component.css']
   })
-export class KendoGridComponent implements OnInit {
+export class VirtualGridComponent implements OnInit {
     public model = {
         id: 1,
         name: 'Test',
